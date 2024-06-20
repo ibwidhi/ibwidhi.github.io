@@ -1,0 +1,28 @@
+name: Update README
+
+on:
+  schedule:
+    - cron: 0/30 * * * *
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Update this repo's README with recent activity
+
+    # GitHub Actions permissions determine what actions a workflow can perform on your repository's behalf.
+    # The contents: write permission specifically allows workflows to modify or create files within the repository.
+    # This permission is particularly useful for workflows that need to update documentation, generate files dynamically,
+    # or perform other tasks that involve writing to the repository's contents.
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout ibwidhi/github-activity-readme@main
+        uses: actions/checkout@v4
+        with:
+          repository: ibwidhi/github-activity-readme@main
+          token: ${{ secrets.ACCESS_TOKEN }} # Optional: Use a personal access token if the repository is private
+          COMMIT_MSG: "Specify a custom commit message"
+          MAX_LINES: 10
+          COMMIT_NAME: GitHub Activity Readme
