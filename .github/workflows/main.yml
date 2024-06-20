@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: ibwidhi/github-activity-readme@main
-          token: ${{ secrets.ACCESS_TOKEN }} # Optional: Use a personal access token if the repository is private
+          token: ${{ secrets.PAT_TOKEN }} # Optional: Use a personal access token if the repository is private
           COMMIT_MSG: "Specify a custom commit message"
           MAX_LINES: 10
           COMMIT_NAME: GitHub Activity Readme
