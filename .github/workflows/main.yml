@@ -17,12 +17,22 @@ jobs:
     permissions:
       contents: write
 
+    # steps:
+    #   - name: Checkout ibwidhi/github-activity-readme
+    #     uses: actions/checkout@v4
+    #     with:
+    #       repository: ibwidhi/github-activity-readme
+    #       token: ${{ secrets.PAT_TOKEN }} # Optional: Use a personal access token if the repository is private
+    #       COMMIT_MSG: "Specify a custom commit message"
+    #       MAX_LINES: 10
+    #       COMMIT_NAME: GitHub Activity Readme
+
     steps:
-      - name: Checkout ibwidhi/github-activity-readme
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+      - uses: jamesgeorge007/github-activity-readme
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          repository: ibwidhi/github-activity-readme
-          token: ${{ secrets.PAT_TOKEN }} # Optional: Use a personal access token if the repository is private
           COMMIT_MSG: "Specify a custom commit message"
           MAX_LINES: 10
           COMMIT_NAME: GitHub Activity Readme
