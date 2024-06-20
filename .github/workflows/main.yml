@@ -18,10 +18,10 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout ibwidhi/github-activity-readme@main
+      - name: Checkout ibwidhi/github-activity-readme
         uses: actions/checkout@v4
         with:
-          repository: ibwidhi/github-activity-readme@main
+          repository: ibwidhi/github-activity-readme
           token: ${{ secrets.PAT_TOKEN }} # Optional: Use a personal access token if the repository is private
           COMMIT_MSG: "Specify a custom commit message"
           MAX_LINES: 10
