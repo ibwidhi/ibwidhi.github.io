@@ -1,38 +1,24 @@
-name: Update README
+name: CI/CD
+run-name: ${{github.actor}} is testing out Github Actions 🚀
 
 on:
-  schedule:
-    - cron: 0/30 * * * *
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
-  build:
+  Readme-Updater:
     runs-on: ubuntu-latest
-    name: Update this repo's README with recent activity
-
-    # GitHub Actions permissions determine what actions a workflow can perform on your repository's behalf.
-    # The contents: write permission specifically allows workflows to modify or create files within the repository.
-    # This permission is particularly useful for workflows that need to update documentation, generate files dynamically,
-    # or perform other tasks that involve writing to the repository's contents.
-    permissions:
-      contents: write
-
-    # steps:
-    #   - name: Checkout ibwidhi/github-activity-readme
-    #     uses: actions/checkout@v4
-    #     with:
-    #       repository: ibwidhi/github-activity-readme
-    #       token: ${{ secrets.PAT_TOKEN }} # Optional: Use a personal access token if the repository is private
-    #       COMMIT_MSG: "Specify a custom commit message"
-    #       MAX_LINES: 10
-    #       COMMIT_NAME: GitHub Activity Readme
-
     steps:
-      - uses: actions/checkout@v4
-      - uses: jamesgeorge007/github-activity-readme
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          COMMIT_MSG: "Specify a custom commit message"
-          MAX_LINES: 10
-          COMMIT_NAME: GitHub Activity Readme
+      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 This job's status is ${{ job.status }}."
