@@ -6,7 +6,7 @@ export default function Home() {
       <div className="flex flex-col items-center justify-center">
         <div className="font-roboto">Hello World</div>
         <div>
-          <Image src={`/github.png`} alt="github" width="64" height="64" />
+          <Image src={`./github.png`} alt="github" width="64" height="64" />
         </div>
       </div>
     </main>
