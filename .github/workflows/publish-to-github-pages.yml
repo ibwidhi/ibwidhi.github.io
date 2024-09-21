@@ -25,8 +25,8 @@ jobs:
 
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
         uses: ./.github/workflows/setup-node
-        with:
-          working-directory: "./site"
+        # with:
+        #   working-directory: "./site"
 
       - name: Setup Pages ⚙️
         uses: actions/configure-pages@v4
@@ -34,14 +34,14 @@ jobs:
           static_site_generator: next
 
       - name: Build with Next.js 🏗️
-        working-directory: "./site"
+        # working-directory: "./site"
         run: npm run build
 
-      - name: Copy Next.js build files
-        working-directory: "./site"
-        run: |
-          # Copy an entire directory to the parent directory
-          cp -r ./out ../out
+      # - name: Copy Next.js build files
+      #   working-directory: "./site"
+      #   run: |
+      #     # Copy an entire directory to the parent directory
+      #     cp -r ./out ../out
 
       - name: Verify file copy
         run: |
